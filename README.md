@@ -1,7 +1,8 @@
 # Verschluesselung-Projekt
 
+# Aktuelle Absprachen mit der anderen Gruppe:
 
-Spezifikation Projekt Verschlüsselung
+
 # Klartext
 Muss in einer .txt Datei abgelegt werden
 Kann beliebige Länge haben, muss aber aus Zeichen der ASCII Tabelle sein!

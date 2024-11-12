@@ -1,5 +1,3 @@
-# Verschluesselung-Projekt
-
 # Aktuelle Absprachen mit der anderen Gruppe:
 
 

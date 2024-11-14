@@ -22,8 +22,10 @@ int main()
 
         /* Programm Auswählen  */
 
-
+    int zahl;
+    printf("Eingabe: \n");
     scanf("%d",&zahl); 
+
 
     
     return 0;

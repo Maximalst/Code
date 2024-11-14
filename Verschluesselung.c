@@ -1,7 +1,7 @@
 
 #include <stdio.h>
 
-int start()
+int main()
 {
     printf("     ________                   111       \n");    
     printf("    /     _/                   1111       \n");
@@ -17,8 +17,6 @@ int start()
     printf("   [2]  Server-SW                         \n");
     printf("   [3]  Testumgebung                      \n");
     printf("   [4]  Brute-Force-Komponente            \n");
-
-    
 
     return 0;
 }

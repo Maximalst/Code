@@ -11,6 +11,9 @@ int main()
     printf("   |  |__|  |     |   /        1111       \n");
     printf("   |        |     |  |         1111       \n");
     printf("   |________|     |__|  *      1111       \n");
+    
+    printf("                                          \n");
+    printf("                                          \n");    
 
     printf("   Bitte Wählen sie eine Aktion aus:      \n");
     printf("   [1]  Client-SW                         \n");

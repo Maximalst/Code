@@ -22,9 +22,27 @@ int main()
 
         /* Programm Auswählen  */
 
-    int zahl;
+    int eingabe;
     printf("Eingabe: ");
-    scanf("%d",&zahl); 
+
+    scanf("%d", &eingabe);
+    printf("Wilkommen in der");
+
+    switch (eingabe) {
+        case 1:
+            printf(" Client-SW\n");
+            break;
+        case 2:
+            printf("Server-SW\n");
+            break;
+        case 3:
+            printf("Testumgebung\n");
+            break;
+        default:
+            printf("Brute-Force-Komponente\n");
+            break;
+    }
+
 
 
     

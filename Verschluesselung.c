@@ -20,7 +20,7 @@ int main()
     printf("   [3]  Testumgebung                      \n");
     printf("   [4]  Brute-Force-Komponente            \n");
 
-        /* Programm Auswählen  */
+        /* Programm Auswählen und ausgabe Auswahl  */
 
     int eingabe;
     printf("Eingabe: ");
@@ -42,7 +42,7 @@ int main()
             printf("Brute-Force-Komponente\n");
             break;
     }
-
+        /*   */
 
 
     

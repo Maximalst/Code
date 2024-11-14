@@ -23,7 +23,7 @@ int main()
         /* Programm Auswählen  */
 
     int zahl;
-    printf("Eingabe: \n");
+    printf("Eingabe: ");
     scanf("%d",&zahl); 
 
 

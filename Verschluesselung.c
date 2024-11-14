@@ -1,9 +1,26 @@
-
 #include <stdio.h>
 
-int main()
-{
-        /* Start Menü  */
+// Funktion Client_SW ohne Rückgabewert
+void Client_SW() {
+    printf("Client-SW Startet\n");
+}
+
+// Dummy-Funktionen für die anderen Optionen
+void Server_SW() {
+    printf("Server-SW\n");
+}
+
+void Testumgebung() {
+    printf("Testumgebung\n");
+}
+
+void Brute_Force_Komponente() {
+    printf("Brute-Force-Komponente\n");
+}
+
+// Menü-Funktion
+int menü() {
+    // Startmenü-Ausgabe
     printf("     ________                   111       \n");    
     printf("    /     _/                   1111       \n");
     printf("   |    _/                  1111111       \n");
@@ -20,33 +37,41 @@ int main()
     printf("   [3]  Testumgebung                      \n");
     printf("   [4]  Brute-Force-Komponente            \n");
 
-        /* Programm Auswählen und ausgabe Auswahl  */
-
+    // Benutzereingabe
     int eingabe;
     printf("Eingabe: ");
-
     scanf("%d", &eingabe);
-    printf("Wilkommen in der");
 
+    printf("Willkommen in der");
+
+    // Auswahl basierend auf der Eingabe
     switch (eingabe) {
         case 1:
             printf(" Client-SW\n");
+            Client_SW();
             break;
         case 2:
-            printf("Server-SW\n");
+            printf(" Server-SW\n");
+            Server_SW();
             break;
         case 3:
-            printf("Testumgebung\n");
+            printf(" Testumgebung\n");
+            Testumgebung();
+            break;
+        case 4:
+            printf(" Brute-Force-Komponente\n");
+            Brute_Force_Komponente();
             break;
         default:
-            printf("Brute-Force-Komponente\n");
+            printf(" Ungültige Auswahl\n");
             break;
     }
-        
-        /**/
-        printf ("%d", eingabe);
 
+    return 0;
+}
 
-    
+int main() {
+    // Aufruf der Menü-Funktion
+    menü();
     return 0;
 }

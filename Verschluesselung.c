@@ -1,7 +1,7 @@
 
 #include <stdio.h>
 
-int main()
+int start()
 {
     printf("     ________                   111       \n");    
     printf("    /     _/                   1111       \n");

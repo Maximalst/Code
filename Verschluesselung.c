@@ -42,7 +42,9 @@ int main()
             printf("Brute-Force-Komponente\n");
             break;
     }
-        /*   */
+        
+        /**/
+        printf ("%d", eingabe);
 
 
     

@@ -12,5 +12,13 @@ int main()
     printf("   |        |     |  |         1111       \n");
     printf("   |________|     |__|  *      1111       \n");
 
+    printf("   Bitte Wählen sie eine Aktion aus:      \n");
+    printf("   [1]  Client-SW                         \n");
+    printf("   [2]  Server-SW                         \n");
+    printf("   [3]  Testumgebung                      \n");
+    printf("   [4]  Brute-Force-Komponente            \n");
+
+    
+
     return 0;
 }

@@ -1,6 +1,14 @@
 # Aktuelle Absprachen mit der anderen Gruppe:
 
 
+
+# Link zu Google Docks
+
+https://docs.google.com/document/d/1c8rKE2PVgkg-WelkKgy_T-19qf4RP8X_8mFPknyleY4/edit?pli=1&tab=t.0
+
+
+
+
 # Klartext
 Muss in einer .txt Datei abgelegt werden
 Kann beliebige Länge haben, muss aber aus Zeichen der ASCII Tabelle sein!

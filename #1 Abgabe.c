@@ -23,13 +23,13 @@ int menü()
 {
     printf("                                           \n");   
     printf("     ________                              \n");    
-    printf("    /     _/                  11111        \n");
-    printf("   |    _/                   111111        \n");
-    printf("   |   /                    1111111        \n");
-    printf("   |  |   ___      ____    11111111        \n");
-    printf("   |  |__|  |     |   /        1111        \n");
-    printf("   |        |     |  |         1111        \n");
-    printf("   |________|     |__|  *      1111        \n");
+    printf("    /     _/                  1111        \n");
+    printf("   |    _/                   11111        \n");
+    printf("   |   /                    111111        \n");
+    printf("   |  |   ___      ____    1111111        \n");
+    printf("   |  |__|  |     |   /        111        \n");
+    printf("   |        |     |  |         111        \n");
+    printf("   |________|     |__|  *      111        \n");
     printf("                                           \n");
     printf("                                           \n");    
     printf("   Bitte Wählen sie eine Aktion aus:       \n");

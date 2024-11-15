@@ -1,11 +1,11 @@
 #include <stdio.h>
 
-// Funktion Client_SW ohne Rückgabewert
+// Funktionen starten
 void Client_SW() {
     printf("Client-SW Startet\n");
 }
 
-// Dummy-Funktionen für die anderen Optionen
+
 void Server_SW() {
     printf("Server-SW\n");
 }
@@ -19,8 +19,8 @@ void Brute_Force_Komponente() {
 }
 
 // Menü-Funktion
-int menü() {
-    // Startmenü-Ausgabe
+int menü() 
+{
     printf("                                           \n");   
     printf("     ________                              \n");    
     printf("    /     _/                  11111        \n");

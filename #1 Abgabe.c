@@ -21,8 +21,8 @@ void Brute_Force_Komponente() {
 // Menü-Funktion
 int menü() 
 {
-    printf("                                           \n");   
-    printf("     ________                              \n");    
+    printf("                                          \n");   
+    printf("     ________                             \n");    
     printf("    /     _/                  1111        \n");
     printf("   |    _/                   11111        \n");
     printf("   |   /                    111111        \n");
@@ -30,13 +30,13 @@ int menü()
     printf("   |  |__|  |     |   /        111        \n");
     printf("   |        |     |  |         111        \n");
     printf("   |________|     |__|  *      111        \n");
-    printf("                                           \n");
-    printf("                                           \n");    
-    printf("   Bitte Wählen sie eine Aktion aus:       \n");
-    printf("   [1]  Client-SW                          \n");
-    printf("   [2]  Server-SW                          \n");
-    printf("   [3]  Testumgebung                       \n");
-    printf("   [4]  Brute-Force-Komponente             \n");
+    printf("                                          \n");
+    printf("                                          \n");    
+    printf("   Bitte Wählen sie eine Aktion aus:      \n");
+    printf("   [1]  Client-SW                         \n");
+    printf("   [2]  Server-SW                         \n");
+    printf("   [3]  Testumgebung                      \n");
+    printf("   [4]  Brute-Force-Komponente            \n");
 
     // Benutzereingabe
     int eingabe;

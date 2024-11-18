@@ -27,9 +27,9 @@ int menü()
     printf("   |    _/                   11111        \n");
     printf("   |   /                    111111        \n");
     printf("   |  |   ___     _____    1111111        \n");
-    printf("   |  |__|  |     |   /        111        \n");
-    printf("   |        |     |  |         111        \n");
-    printf("   |________|     |__|  *      111        \n");
+    printf("   |  |__|  |     |  /         111        \n");
+    printf("   |        |     | |          111        \n");
+    printf("   |________|     |_|  *       111        \n");
     printf("                                          \n");
     printf("                                          \n");    
     printf("   Bitte Wählen sie eine Aktion aus:      \n");

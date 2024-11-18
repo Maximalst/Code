@@ -1,29 +1,21 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-int main() {
-    char dateiPfad[256];  // Puffer für den Dateipfad
-    FILE *datei;
+int main()
+{
+    char eingabe[1025];
+    printf("Bitte gebe .txt inhalt ein!");// max 1024
+    fgets(eingabe, sizeof(eingabe), stdin);
 
-    // Benutzer auffordern, den Dateipfad einzugeben
-    printf("Bitte geben Sie den Dateipfad ein: ");
-    scanf("%255s", dateiPfad);  // Den Dateipfad vom Benutzer einlesen
-
-    // Datei im Lese-Modus öffnen
-    datei = fopen(dateiPfad, "r");
-
-    // Überprüfen, ob die Datei erfolgreich geöffnet wurde
-    if (datei == NULL) {
-        perror("Fehler beim Öffnen der Datei");
+    FILE *datei = fopen("Key.txt", "w");
+    if (datei == NULL)
+    {
+        printf("Fehler beim Erstellen der Datei!\n");
         return 1;
     }
-
-    printf("Datei erfolgreich geöffnet: %s\n", dateiPfad);
-
-    // Hier kann weiter mit der Datei gearbeitet werden...
-
-    // Datei schließen
+    fprintf(datei, "%s", eingabe);
     fclose(datei);
+
+    printf("Der eingegebene Key wurde in 'Key.txt' gespeichert (im aktuellen Ordner).\n");
 
     return 0;
 }

@@ -1,16 +1,15 @@
 #include <stdio.h>
 
 int main() {
+    char nachricht[1024];
 
-    FILE *fOpen;
-    int temp;
+    printf("Hier deine Nachricht eingeben: ");
+    scanf("%s", nachricht); 
 
-    fOpen = fopen("test.txt", "r");
-    
-    while ((temp = fgetc(fOpen))!= EOF)
-    {
-        printf("%c", temp);
+    printf("Die ASCII-Werte der Nachricht sind:\n");
+    for (int i = 0; nachricht[i] != '\0'; i++) { // Schleife über die Zeichen
+        printf("'%c' -> %d\n", nachricht[i], (int)nachricht[i]);
     }
-    fclose(fOpen);
-}
 
+    return 0;
+}

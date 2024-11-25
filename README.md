@@ -4,16 +4,8 @@
 
 ## Termine 
 
-1. Vorstellung der gemeinsamen verbindlichen Spezifikation
-(IETF RFC ☺)
-- beinhaltet Dokument zur Spezifikation & Foliensatz
-- gemeinsam Mo 25.11 (in der Vorlesung: zwei Sprecher)
-2. Vorstellung der Lösungen (Gruppe 1 und Gruppe 2)
 - Team 1: Mo 02.12 [ca. 30 min]
 - Team 2: Di 03.12 [ca. 30 min]
-- Entspricht Lösung der gemeinsamen Spezifikation?
-- Kompatibilitäts-Test der Lösungen
-- Performanz-Test der Brute-Force Komponente
 
 
 ## Link zu Google Docks

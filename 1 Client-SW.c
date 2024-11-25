@@ -40,7 +40,7 @@ int main() {
     
     // Misst die Zifferanzahl des Binärcodes
     int ziffern = strlen(gesamterBinärCode);
-    printf("Der Binärcode ist %d Ziffern groß.", ziffern);
+    printf("Der Binärcode ist %d Ziffern groß.\n", ziffern);
 
     // Berechnung wie viele Ziffern mit 1 aufgefüllt werden soll
     int maxLength = 64 * 8; // Maximale länge des Binärcodes 512 bits
@@ -58,7 +58,7 @@ int main() {
     
     // Misst die Zifferanzahl des Binärcodes
     int lol = strlen(gesamterBinärCode);
-    printf("Der Binärcode ist %d Ziffern groß.\n", lol);
+    printf("Der Binärcode ist %d Ziffern groß.\n\n", lol);
 
     return 0;
 }

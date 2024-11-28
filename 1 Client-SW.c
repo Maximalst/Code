@@ -75,9 +75,18 @@ int main() {
         blBinary[i] = (blocklength % 2) ? '1' : '0';
         blocklength /= 2;
     }
-    blBinary[8] = '\0';
+    blBinary[9] = '\0';
 
-    printf("Blocklänge als Binär: %s", blBinary);
+    char verschlüsselterCode[64 * 8 + 1] = "";
+    for (int i = 0; i < strlen(gesamterBinärCode); i++) {
+        // XOR zwischen den Binärwerten der Nachricht und dem Schlüssel
+        char xorBit = (gesamterBinärCode[i] == key[i % 16]) ? '0' : '1';
+        strncat(verschlüsselterCode, &xorBit, 1);
 
+
+    }
+    printf("%s",verschlüsselterCode);
+    
     return 0;
+
 }

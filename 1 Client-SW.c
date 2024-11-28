@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <string.h>  // Für strcat
-#include <time.h> // Für rand method
+#include <string.h>
+#include <time.h>
 #include <stdlib.h>
 
 int main() {
@@ -9,64 +9,75 @@ int main() {
     char gesamterBinärCode[64 * 8 + 1] = ""; // Puffer für den gesamten Binärcode
 
     printf("Hier deine Nachricht eingeben: \n");
-    fgets(nachricht, 1024, stdin); // fgets, weil sonst die Leerzeichen nicht gelesen werden
+    fgets(nachricht, 1024, stdin);
 
-    // Entfernen des Zeilenumbruchs, der durch fgets am Ende der Eingabe eingefügt wird
     nachricht[strcspn(nachricht, "\n")] = '\0';
 
     printf("Die ASCII-Werte der Nachricht sind:\n");
-    int i;
-    for (i = 0; nachricht[i] != '\0'; i++) {
+    for (int i = 0; nachricht[i] != '\0'; i++) {
         asciiWerte[i] = (int)nachricht[i];
-        printf("'%c' -> %d -> ", nachricht[i], asciiWerte[i]); // ASCII-Wert ausgeben
+        printf("'%c' -> %d -> ", nachricht[i], asciiWerte[i]);
 
-        // Berechnung der Binärdarstellung
-        char binary[9]; // 8 Bits für ASCII + Nullterminator
-        binary[8] = '\0'; // Nullterminator setzen
-        
+        char binary[9];
+        binary[8] = '\0';
+
         int num = asciiWerte[i];
         for (int j = 7; j >= 0; j--) {
-            binary[j] = (num & 1) ? '1' : '0'; // Prüfe das niedrigste Bit
-            num >>= 1; // Schiebe die Bits nach rechts
+            binary[j] = (num & 1) ? '1' : '0';
+            num >>= 1;
         }
 
-        printf("%s\n", binary); // Binärdarstellung ausgeben
-
-        // Füge den Binärwert des aktuellen Zeichens zum gesamten Binärcode hinzu
+        printf("%s\n", binary);
         strcat(gesamterBinärCode, binary);
     }
 
-    // Ausgabe des gesamten Binärcodes
     printf("\nDer gesamte Binärcode der Nachricht ist:\n");
     printf("%s\n\n", gesamterBinärCode);
-    
-    // Misst die Zifferanzahl des Binärcodes
+
     int ziffern = strlen(gesamterBinärCode);
     printf("Der Binärcode ist %d Ziffern groß.\n", ziffern);
 
-    // Berechnung wie viele Ziffern mit 1 aufgefüllt werden soll
-    int maxLength = 64 * 8; // Maximale länge des Binärcodes 512 bits
+    // Auffüllen mit '1'
+    int maxLength = 64 * 8;
     if (ziffern < maxLength) {
         int fehlendeZiffern = maxLength - ziffern;
         for (int i = 0; i < fehlendeZiffern; i++) {
-            strncat(gesamterBinärCode, "1", 1); //Hängt an restliche freie Stellen des Binärcodes 1 an
+            strncat(gesamterBinärCode, "1", 1);
         }
-        
     }
-    
-    // Ausgabe des aktualisierten Binärcodes
+
     printf("\nDer Binärcode nach dem Auffüllen mit '1':\n");
     printf("%s\n\n", gesamterBinärCode);
-    
-    // Misst die Zifferanzahl des Binärcodes
-    int lol = strlen(gesamterBinärCode);
-    printf("Der Binärcode ist %d Ziffern groß.\n\n", lol);
 
-    //Schluessel Erstellen
+    printf("Der Binärcode ist %lu Ziffern groß.\n\n", strlen(gesamterBinärCode));
+
+    // Zufällige Zahl und Schlüsselberechnung
     srand(time(0));
-    int randomZahl = (rand() % 65000) + 10; //Random Zahl von 10 - 65000 wird erstell
-    printf("%d", randomZahl);
+    int randomZahl = (rand() % 65000) + 10;
+    printf("Zufällige Zahl: %d\n", randomZahl);
+
+    char key[17] = ""; // Platz für 16 Bits + Nullterminator
+    for (int i = 15; i >= 0; i--) {
+        key[i] = (randomZahl % 2) ? '1' : '0';
+        randomZahl /= 2;
+    }
+    key[16] = '\0';
+
+    printf("Binärschlüssel: %s\n\n", key);
+
+    // Blocklänge in Binär
+    int blocklength = ziffern / 8;
+    printf("Die Blocklänge ist %d Ziffern Groß\n", blocklength);
+
+    char blBinary[9] = "";
+    for (int i = 7; i >= 0; i--)
+    {
+        blBinary[i] = (blocklength % 2) ? '1' : '0';
+        blocklength /= 2;
+    }
+    blBinary[9] = '\0';
+
+    printf("Blocklänge als Binär: %s", blBinary);
 
     return 0;
 }
-

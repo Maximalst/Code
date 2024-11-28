@@ -8,7 +8,7 @@ int main() {
     int asciiWerte[1024];
     char gesamterBinärCode[64 * 8 + 1] = ""; // Puffer für den gesamten Binärcode
 
-    printf("Hier deine Nachricht eingeben: \n");
+    printf("Hier deine Nachricht eingeben Max. 64 Zeichen: \n");
     fgets(nachricht, 1024, stdin);
 
     nachricht[strcspn(nachricht, "\n")] = '\0';
@@ -86,7 +86,25 @@ int main() {
 
     }
     printf("%s",verschlüsselterCode);
-    
-    return 0;
 
+// Datei wird erstellt    
+FILE *file = fopen("/Users/andreas/Documents/Studium/Programmieren/testProjekt/text.txt", "w");
+
+// Überprüfen, ob die Datei erfolgreich geöffnet wurde
+    if (file == NULL) {
+        printf("Fehler beim Erstellen der Datei!\n");
+        return 1; // Fehlercode zurückgeben
+    }
+
+// In die Datei schreiben
+fprintf(file, "%s", key);                   //Schlüssel 16 Ziffern
+fprintf(file, "%s", blBinary);              //Blocklänge 8 Ziffern
+fprintf(file, "%s", verschlüsselterCode);   //Verschlüsselte Nachricht 512 Ziffern
+    
+// Datei schließen
+fclose(file);
+
+printf("Inter");
+
+return 0;
 }

@@ -75,7 +75,7 @@ int main() {
         blBinary[i] = (blocklength % 2) ? '1' : '0';
         blocklength /= 2;
     }
-    blBinary[9] = '\0';
+    blBinary[8] = '\0';
 
     printf("Blocklänge als Binär: %s", blBinary);
 

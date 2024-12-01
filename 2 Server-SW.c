@@ -1,91 +1,69 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
 
-#define MAX_BLOCK_SIZE 1024 // Maximale Blockgröße (2^10 Bits)
+// Funktion zur Umwandlung eines Binärstrings in eine Ganzzahl (16 Bit)
+unsigned short binToDec(const char *bin) {
+    unsigned short num = 0;
+    for (int i = 0; i < 16; i++) {
+        if (bin[i] == '1') {
+            num |= (1 << (15 - i));
+        }
+    }
+    return num;
+}
 
-// Funktion zum Entschlüsseln eines Blocks
-void decryptBlock(unsigned char *block, unsigned char *key, int blockSize) {
-    for (int i = 0; i < blockSize; i++) {
-        block[i] ^= key[i]; // XOR-Verschlüsselung rückgängig machen
+// Funktion zur Umwandlung einer Ganzzahl in einen Binärstring (16 Bits)
+void decToBin(unsigned short num, char *bin) {
+    for (int i = 0; i < 16; i++) {
+        bin[i] = (num & (1 << (15 - i))) ? '1' : '0';
+    }
+    bin[16] = '\0';
+}
+
+// Funktion zur Entschlüsselung des Textes
+void decrypt(const char *cipherTextBin, const char *keyBin) {
+    int len = strlen(cipherTextBin);  // Länge des verschlüsselten Textes
+    unsigned short key = binToDec(keyBin);  // Umwandeln des Schlüssels in Dezimal
+    char decryptedCharBin[17];  // Binärrepräsentation des entschlüsselten Zeichens
+
+    // Durchlaufe den verschlüsselten Text
+    for (int i = 0; i < len; i++) {
+        // Aktuelles Zeichen im verschlüsselten Text (in Binär)
+        unsigned short cipherChar = binToDec(cipherTextBin + i);
+
+        // XOR mit dem Schlüssel
+        unsigned short decryptedChar = cipherChar ^ key;
+
+        // Umwandeln des entschlüsselten Zeichens in Binär
+        decToBin(decryptedChar, decryptedCharBin);
+
+        // Ausgabe des entschlüsselten Zeichens als ASCII
+        printf("%c", (char)decryptedChar);
     }
 }
 
-// Funktion zum Lesen der verschlüsselten Datei
-void readEncryptedFile(const char *filename, unsigned char **encryptedData, unsigned char **key, int *blockSize, int *dataSize) {
-    FILE *file = fopen(filename, "rb");
-    if (!file) {
-        perror("Fehler beim Öffnen der Datei");
-        exit(EXIT_FAILURE);
+int main() {
+    // Eingabe des 16-Bit langen Schlüssels
+    char keyBin[17];
+    printf("Bitte geben Sie den 16-Bit langen Schlüssel in Binärform ein: ");
+    scanf("%16s", keyBin);
+
+    // Prüfen, ob der Schlüssel genau 16 Bits lang ist
+    if (strlen(keyBin) != 16) {
+        printf("Fehler: Der Schlüssel muss genau 16 Bits lang sein.\n");
+        return 1;
     }
 
-    // Schlüssel (16 Bit) lesen
-    *key = (unsigned char *)malloc(2);
-    fread(*key, 1, 2, file);
+    // Eingabe des verschlüsselten Textes als Binärstring (jeweils ein Zeichen als 8 Bits)
+    char cipherTextBin[1024];
+    printf("Bitte geben Sie den verschlüsselten Text in Binärform ein (jede 8-Bit für ein Zeichen): ");
+    scanf("%1024s", cipherTextBin);
 
-    // Blockgröße (8 Bit) lesen
-    unsigned char blockSizeByte;
-    fread(&blockSizeByte, 1, 1, file);
-    *blockSize = 1 << blockSizeByte; // Blockgröße als Potenz von 2
+    // Entschlüsselung und Ausgabe des Ergebnisses
+    printf("\nEntschlüsselter Text: ");
+    decrypt(cipherTextBin, keyBin);
+    printf("\n");
 
-    // Verschlüsselte Daten lesen
-    fseek(file, 0, SEEK_END);
-    *dataSize = ftell(file) - 3; // 3 Bytes für Schlüssel und Blockgröße
-    rewind(file);
-    fseek(file, 3, SEEK_SET); // Überspringe Schlüssel und Blockgröße
-
-    *encryptedData = (unsigned char *)malloc(*dataSize);
-    fread(*encryptedData, 1, *dataSize, file);
-    fclose(file);
-}
-
-// Funktion zum Schreiben der entschlüsselten Nachricht
-void writeDecryptedFile(const char *filename, unsigned char *data, int dataSize) {
-    char outputFilename[256];
-    snprintf(outputFilename, sizeof(outputFilename), "%s_dec.txt", filename);
-
-    FILE *file = fopen(outputFilename, "w");
-    if (!file) {
-        perror("Fehler beim Schreiben der Datei");
-        exit(EXIT_FAILURE);
-    }
-
-    fwrite(data, 1, dataSize, file); // Entschlüsselte Daten speichern
-    fclose(file);
-}
-
-int main(int argc, char *argv[]) {
-    if (argc < 2) {
-        printf("Verwendung: %s <verschlüsselte Datei>\n", argv[0]);
-        return EXIT_FAILURE;
-    }
-
-    unsigned char *encryptedData = NULL;
-    unsigned char *key = NULL;
-    int blockSize = 0, dataSize = 0;
-
-    // Verschlüsselte Datei lesen
-    readEncryptedFile(argv[1], &encryptedData, &key, &blockSize, &dataSize);
-
-    // Entschlüsselte Datenpuffer erstellen
-    unsigned char *decryptedData = (unsigned char *)malloc(dataSize);
-
-    // Blockweise entschlüsseln
-    for (int i = 0; i < dataSize; i += blockSize) {
-        int currentBlockSize = (i + blockSize <= dataSize) ? blockSize : dataSize - i;
-        memcpy(decryptedData + i, encryptedData + i, currentBlockSize); // Kopiere aktuellen Block
-        decryptBlock(decryptedData + i, key, currentBlockSize);         // Entschlüsseln
-    }
-
-    // Entschlüsselte Datei schreiben
-    writeDecryptedFile(argv[1], decryptedData, dataSize);
-
-    printf("Entschlüsselung abgeschlossen. Datei gespeichert.\n");
-
-    // Speicher freigeben
-    free(encryptedData);
-    free(decryptedData);
-    free(key);
-
-    return EXIT_SUCCESS;
+    return 0;
 }

@@ -35,7 +35,7 @@ void decrypt(const char *cipherTextBin, const char *keyBin) {
         unsigned char cipherChar = (unsigned char)binToDec(currentCharBin);  // Binärstring in Dezimalwert (ASCII) umwandeln
         unsigned char keyByte = key[i % (keyLen / 8)];  // Wiederhole den Schlüssel blockweise
         unsigned char decryptedChar = cipherChar ^ keyByte;  // Entschlüsselung durch XOR mit dem aktuellen Schlüssel-Byte
-
+        // !!!Bitte NICHT anfasser!!!! Das waren genügen stress und adrenalin für die nächsten 2 Jahre
         printf("%c", (char)decryptedChar);  // Gib das entschlüsselte Zeichen aus
     }
     printf("\n");  // Neue Zeile nach der Ausgabe
@@ -63,5 +63,5 @@ int main() {
     printf("\nEntschlüsselter Text: ");  // Ausgabeüberschrift
     decrypt(cipherTextBin, keyBin);  // Entschlüsselung aufrufen
 
-    return 0;  // Programm erfolgreich beenden
+    return 0;  // Programm erfolgreich beenden Jeyyyyyyyy
 }

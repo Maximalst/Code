@@ -88,7 +88,7 @@ int main() {
     printf("%s",verschlüsselterCode);
 
 // Datei wird erstellt    
-FILE *file = fopen("/Users/andreas/Documents/Studium/Programmieren/testProjekt/text.txt", "w");
+FILE *file = fopen("/maximilian", "w");
 
 // Überprüfen, ob die Datei erfolgreich geöffnet wurde
     if (file == NULL) {
